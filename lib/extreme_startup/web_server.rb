@@ -15,7 +15,7 @@ module ExtremeStartup
     
   class WebServer < Sinatra::Base
 
-    set :port, 3000
+    set :port, ENV['PORT'] || 3000
     set :static, true 
     set :public, 'public'
     set :players,    Hash.new
@@ -133,7 +133,7 @@ module ExtremeStartup
     end
     
     post '/advance_round' do
-      question_factory.advance_round
+      question_factory.advance_round.to_s
     end
  
     post '/pause' do
